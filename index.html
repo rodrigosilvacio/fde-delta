@@ -239,7 +239,8 @@ section.block{padding:96px 0;border-bottom:1px solid var(--line)}
 .unlock .msg.err{color:var(--cream)}
 .unlock .msg.ok{color:var(--mint)}
 .unlock .hint{margin-top:4px;font-size:12px;line-height:18px;color:var(--cream-70)}
-.rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media (max-width:1180px){.rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .rfile{display:grid;grid-template-columns:96px minmax(0,1fr);gap:24px;padding:24px;border:1px solid var(--cream-12);border-radius:var(--r-card);background:var(--cream-07)}
 .rfile .cover{aspect-ratio:3/4;border-radius:var(--r-card);border:1px solid var(--cream-16);display:grid;place-items:center;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--cream-70);text-align:center;padding:8px}
 .rfile .cover b{display:block;font-family:var(--font-display);font-weight:400;font-size:30px;line-height:36px;color:var(--mint);margin-bottom:4px}
@@ -250,6 +251,10 @@ section.block{padding:96px 0;border-bottom:1px solid var(--line)}
 .rfile .acts .btn{height:36px;line-height:36px;padding:0 16px}
 .rfile .acts .btn-tertiary{color:var(--mint)}
 .locked[data-state="open"] .tag::before{background:var(--mint)}
+.rfile{grid-template-columns:1fr;gap:16px;align-content:start}
+.rfile .cover{aspect-ratio:auto;place-items:start;padding:12px 16px;text-align:left}
+.rfile .cover>div{display:flex;align-items:baseline;gap:8px}
+.rfile .cover b{margin-bottom:0}
 
 /* Footer */
 footer{background:var(--pine);color:var(--cream-70);padding:48px 0;font-size:14px;line-height:21px}
@@ -592,8 +597,8 @@ footer .right{margin-left:auto;text-align:right}
         <div class="head">
           <div>
             <p class="eyebrow">Resolução do case</p>
-            <h2 class="display" id="t-resolucao">Gabaritos e exemplo de apresentação final.</h2>
-            <p>Os dois arquivos trazem as respostas. Ficam guardados até a correção: liberar antes tira do trio a parte mais importante do trabalho. A senha é informada pelo professor ao final.</p>
+            <h2 class="display" id="t-resolucao">Possíveis soluções, gabaritos e exemplo de apresentação final.</h2>
+            <p>Os três arquivos trazem as respostas. Ficam guardados até a correção: liberar antes tira do trio a parte mais importante do trabalho. A senha é informada pelo professor ao final.</p>
           </div>
           <form class="unlock" id="unlock" autocomplete="off" novalidate>
             <label for="pw">Senha da resolução</label>
@@ -609,6 +614,19 @@ footer .right{margin-left:auto;text-align:right}
           </form>
         </div>
         <div class="rgrid">
+          <article class="rfile" data-src="Case-Taruma-Tres-caminhos" data-name="Case-Taruma-Tres-caminhos.pdf">
+            <div class="cover"><div><b>13</b>páginas</div></div>
+            <div>
+              <span class="tag" data-lock-tag>Bloqueado</span>
+              <h3 style="margin-top:12px">Possíveis soluções do case</h3>
+              <p>Três caminhos para a Tarumã: o que cada solução resolve, o que custa, quem resiste e por que a recomendação não é o agente que o CFO pediu.</p>
+              <div class="facts">PDF · 75 KB</div>
+              <div class="acts">
+                <button class="btn btn-secondary" type="button" data-act="open" disabled>Abrir ↗</button>
+                <button class="btn btn-tertiary" type="button" data-act="download" disabled>Baixar ↓</button>
+              </div>
+            </div>
+          </article>
           <article class="rfile" data-src="Case-Taruma-Caderno-completo-com-gabaritos" data-name="Case-Taruma-Caderno-completo-com-gabaritos.pdf">
             <div class="cover"><div><b>29</b>páginas</div></div>
             <div>
