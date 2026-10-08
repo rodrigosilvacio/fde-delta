@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Tarumã Componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pine:#182626;--cream:#FCFFFA;--olive:#516B4B;--mint:#ABCCA3;
+  --cream-82:rgba(252,255,250,.82);--cream-70:rgba(252,255,250,.70);--cream-25:rgba(252,255,250,.25);--cream-16:rgba(252,255,250,.16);--cream-12:rgba(252,255,250,.12);--cream-07:rgba(252,255,250,.07);
+  --pine-70:rgba(24,38,38,.70);--pine-35:rgba(24,38,38,.35);--pine-25:rgba(24,38,38,.25);--pine-12:rgba(24,38,38,.12);--pine-07:rgba(24,38,38,.07);
+  --olive-15:rgba(81,107,75,.15);--mint-15:rgba(171,204,163,.15);
+
+  --bg:var(--cream);--fg:var(--pine);--muted:var(--pine-70);--line:var(--pine-12);--line-strong:var(--pine-25);
+  --surface:var(--cream);--surface-2:var(--pine-07);--accent:var(--olive);--accent-ring:var(--olive-15);
+  --chip-on-bg:var(--pine);--chip-on-fg:var(--cream);
+
+  --font-display:"Eurostile","Saira",system-ui,sans-serif;
+  --font-text:"Aeonik","Manrope",system-ui,sans-serif;
+  --r-card:8px;--r-field:12px;--r-panel:20px;--r-pill:999px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#182626;--fg:var(--cream);--muted:var(--cream-70);--line:var(--cream-12);--line-strong:var(--cream-25);
+    --surface:var(--cream-07);--surface-2:var(--cream-07);--accent:var(--mint);--accent-ring:var(--mint-15);
+    --chip-on-bg:var(--mint);--chip-on-fg:var(--pine);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#182626;--fg:var(--cream);--muted:var(--cream-70);--line:var(--cream-12);--line-strong:var(--cream-25);
+  --surface:var(--cream-07);--surface-2:var(--cream-07);--accent:var(--mint);--accent-ring:var(--mint-15);
+  --chip-on-bg:var(--mint);--chip-on-fg:var(--pine);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{font-family:var(--font-text);font-size:16px;line-height:24px;color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+[hidden]{display:none!important}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.skip{position:absolute;left:16px;top:-48px;background:var(--mint);color:var(--pine);padding:8px 16px;border-radius:var(--r-pill);font-weight:600;z-index:100;text-decoration:none}
+.skip:focus{top:12px}
+
+/* Type */
+.display{font-family:var(--font-display);font-weight:400}
+h1.display{font-size:62px;line-height:64px;letter-spacing:-.02em}
+h2.display{font-size:42px;line-height:44px;letter-spacing:-.02em}
+h3.display{font-size:30px;line-height:36px;letter-spacing:-.01em}
+.h4{font-family:var(--font-display);font-weight:400;font-size:22px;line-height:28px}
+.eyebrow{font-size:14px;line-height:21px;color:var(--accent);font-weight:600}
+.lede{font-size:20px;line-height:30px;max-width:56ch}
+.small{font-size:14px;line-height:21px}
+.caption{font-size:12px;line-height:18px;color:var(--muted)}
+.muted{color:var(--muted)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 24px;border-radius:var(--r-pill);font-size:13px;line-height:44px;font-weight:600;letter-spacing:.02em;text-decoration:none;cursor:pointer;border:1.5px solid transparent;white-space:nowrap;transition:background-color .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--mint);color:var(--pine)}
+.btn-primary:hover{background:var(--cream)}
+.btn-primary:active{background:var(--cream-82)}
+.btn-secondary{background:transparent;border-color:var(--line-strong);color:var(--fg)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.btn-tertiary{background:transparent;border:0;padding:0 8px;color:var(--accent)}
+.btn-tertiary:hover{text-decoration:underline;text-underline-offset:4px}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+.on-dark .btn-secondary{border-color:var(--cream-25);color:var(--cream)}
+.on-dark .btn-secondary:hover{border-color:var(--mint);color:var(--mint)}
+.btn .size{font-weight:400;opacity:.7}
+
+/* Tags */
+.tag{display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px;border:1px solid var(--line);border-radius:var(--r-pill);font-size:12px;line-height:18px;font-weight:600;color:var(--fg);white-space:nowrap}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.on-dark .tag{border-color:var(--cream-16);color:var(--cream)}
+.on-dark .tag::before{background:var(--mint)}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(24,38,38,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--cream-12)}
+.nav .wrap{display:flex;align-items:center;gap:32px;height:64px}
+.nav .logo{flex:none;display:flex;align-items:center}
+.nav .logo img{height:18px;width:auto;min-width:120px}
+.nav ul{display:flex;gap:4px;list-style:none;margin-left:auto}
+.nav a.link{display:block;padding:8px 12px;border-radius:var(--r-pill);font-size:14px;line-height:21px;color:var(--cream-70);text-decoration:none;transition:color .15s,background-color .15s}
+.nav a.link:hover{color:var(--cream)}
+.nav a.link[aria-current="true"]{color:var(--mint);background:var(--cream-07)}
+.progress-pill{display:none}
+
+/* Hero */
+.hero{position:relative;background:var(--pine);color:var(--cream);overflow:hidden;border-bottom:1px solid var(--cream-12)}
+.hero::before{content:"";position:absolute;top:0;bottom:0;right:0;left:55%;background-image:radial-gradient(circle,rgba(252,255,250,.16) 0.8px,transparent 1.1px);background-size:24px 24px;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;padding-top:96px;padding-bottom:96px;align-items:center}
+.hero .eyebrow{color:var(--mint);margin-bottom:24px;display:flex;flex-wrap:wrap;gap:8px 12px}
+.hero .eyebrow span+span::before{content:"·";margin-right:12px;opacity:.6}
+.hero h1{margin-bottom:24px}
+.hero .lede{color:var(--cream-82);margin-bottom:32px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
+.hero .meta{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 48px;padding-top:24px;border-top:1px solid var(--cream-12)}
+.hero .meta dt{font-size:12px;line-height:18px;color:var(--cream-70)}
+.hero .meta dd{font-size:16px;line-height:24px;color:var(--cream)}
+
+/* Badge */
+.badge-stage{position:relative;height:520px;display:flex;justify-content:center}
+.lanyard{position:absolute;top:-96px;left:50%;width:120px;height:200px;transform:translateX(-50%) rotate(-4deg)}
+.lanyard::before,.lanyard::after{content:"";position:absolute;top:0;width:6px;height:200px;background:var(--olive)}
+.lanyard::before{left:12px;transform:rotate(12deg);transform-origin:top}
+.lanyard::after{right:12px;transform:rotate(-2deg);transform-origin:top}
+.badge{position:relative;margin-top:88px;width:300px;height:420px;background:var(--cream);color:var(--pine);border-radius:20px;transform:rotate(4deg);overflow:hidden;display:flex;flex-direction:column}
+.badge .slot{width:48px;height:12px;border-radius:var(--r-pill);background:var(--pine);margin:24px auto}
+.badge .band{background:var(--olive);color:var(--cream);font-weight:600;font-size:15px;line-height:22px;text-align:center;padding:12px 0}
+.badge .who{font-family:var(--font-display);font-size:42px;line-height:44px;letter-spacing:-.02em;text-align:center;padding:24px 24px 16px;border-bottom:1px solid var(--pine-12);margin:0 24px}
+.badge dl{padding:16px 24px;display:grid;gap:8px}
+.badge dt{font-size:12px;line-height:18px;color:var(--pine-70)}
+.badge dd{font-size:15px;line-height:20px;margin-top:-4px}
+.badge .bars{margin:auto 24px 24px;height:24px;background:repeating-linear-gradient(90deg,var(--pine) 0 3px,transparent 3px 8px,var(--pine) 8px 10px,transparent 10px 16px)}
+
+/* Sections */
+section.block{padding:96px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 64px;align-items:end;margin-bottom:48px}
+.sec-head .eyebrow{margin-bottom:12px}
+.sec-head p{color:var(--muted);max-width:56ch}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.stat{padding:24px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat .num{font-family:var(--font-display);font-weight:500;font-size:42px;line-height:44px;letter-spacing:-.02em;margin-bottom:12px;white-space:nowrap}
+.stat p{font-size:14px;line-height:21px;color:var(--muted)}
+.quote{margin-top:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.quote figure{padding:24px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface)}
+.quote blockquote{font-family:var(--font-display);font-size:22px;line-height:28px;margin-bottom:12px}
+.quote figcaption{font-size:14px;line-height:21px;color:var(--muted)}
+
+/* Steps */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;counter-reset:s}
+.steps li{position:relative;padding:24px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);counter-increment:s}
+.steps li::before{content:"0" counter(s);display:block;font-family:var(--font-display);font-weight:500;font-size:30px;line-height:36px;color:var(--accent);margin-bottom:16px}
+.steps h3{font-size:17px;line-height:24px;font-weight:700;margin-bottom:8px}
+.steps p{font-size:14px;line-height:21px;color:var(--muted);margin-bottom:16px}
+.steps a{font-size:14px;line-height:21px;font-weight:600;color:var(--accent);text-decoration:none}
+.steps a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:32px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:36px;padding:0 16px;border-radius:var(--r-pill);border:1px solid var(--line-strong);background:transparent;font-size:14px;font-weight:600;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--chip-on-bg);color:var(--chip-on-fg);border-color:var(--chip-on-bg)}
+.chip .n{opacity:.6;margin-left:4px;font-weight:400}
+.search{position:relative;margin-left:auto;width:280px;max-width:100%}
+.search input{width:100%;height:44px;border-radius:var(--r-field);border:1px solid var(--line);background:var(--surface);padding:0 48px 0 16px;font-size:16px;outline:none;transition:border-color .15s,box-shadow .15s}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-ring)}
+.search kbd{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:var(--font-text);font-size:12px;line-height:18px;padding:0 8px;border:1px solid var(--line);border-radius:var(--r-card);color:var(--muted)}
+.readbar{display:flex;align-items:center;gap:12px;width:100%;font-size:14px;line-height:21px;color:var(--muted)}
+.readbar .track{flex:1;max-width:240px;height:4px;border-radius:var(--r-pill);background:var(--line);overflow:hidden}
+.readbar .fill{height:100%;width:0;background:var(--accent);transition:width .3s}
+.readbar button{margin-left:auto}
+
+/* File cards */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.file{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);overflow:hidden;transition:border-color .15s}
+.file:hover{border-color:var(--line-strong)}
+.file.is-read{border-color:var(--accent)}
+.thumb{position:relative;display:block;aspect-ratio:4/3;background:var(--pine);overflow:hidden;border-bottom:1px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:opacity .2s}
+.thumb:hover img{opacity:.85}
+.thumb .ext{position:absolute;left:12px;top:12px;height:24px;padding:0 8px;border-radius:var(--r-pill);background:var(--cream);color:var(--pine);font-size:12px;line-height:24px;font-weight:700;letter-spacing:.02em}
+.thumb .open-hint{position:absolute;right:12px;bottom:12px;height:28px;padding:0 12px;border-radius:var(--r-pill);background:var(--mint);color:var(--pine);font-size:12px;line-height:28px;font-weight:600;opacity:0;transition:opacity .15s}
+.thumb:hover .open-hint,.thumb:focus-visible .open-hint{opacity:1}
+.thumb-kit{display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:var(--cream)}
+.thumb-kit ul{list-style:none;display:grid;gap:4px;font-size:13px;line-height:20px;color:var(--cream-82)}
+.thumb-kit li{display:flex;gap:8px}
+.thumb-kit li span{color:var(--mint);min-width:40px}
+.file .body{flex:1;display:flex;flex-direction:column;padding:24px}
+.file .top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.file h3{font-family:var(--font-display);font-weight:400;font-size:22px;line-height:28px;margin-bottom:8px}
+.file p{font-size:14px;line-height:21px;color:var(--muted);margin-bottom:16px}
+.file .facts{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;line-height:18px;color:var(--muted);margin-top:auto;margin-bottom:16px}
+.file .facts span+span::before{content:"·";margin-right:12px}
+.file .acts{display:flex;align-items:center;gap:8px;padding-top:16px;border-top:1px solid var(--line)}
+.file .acts .btn{height:36px;line-height:36px;padding:0 16px}
+.check{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;user-select:none}
+.check input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:1.5px solid var(--line-strong);border-radius:50%;display:grid;place-content:center;cursor:pointer;transition:background-color .15s,border-color .15s}
+.check input::after{content:"";width:8px;height:5px;border-left:2px solid var(--chip-on-fg);border-bottom:2px solid var(--chip-on-fg);transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+.check input:checked{background:var(--accent);border-color:var(--accent)}
+.check input:checked::after{opacity:1;border-color:var(--bg)}
+.check input:checked+span{color:var(--accent)}
+.empty{display:none;padding:48px 24px;text-align:center;border:1px dashed var(--line-strong);border-radius:var(--r-card);color:var(--muted)}
+.empty.show{display:block}
+
+/* Kit */
+.tabs{display:flex;gap:0;border:1px solid var(--line);border-radius:var(--r-pill);padding:4px;width:max-content;max-width:100%;overflow-x:auto;margin-bottom:24px}
+.tab{height:36px;padding:0 20px;border:0;border-radius:var(--r-pill);background:transparent;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;transition:background-color .15s,color .15s}
+.tab:hover{color:var(--fg)}
+.tab[aria-selected="true"]{background:var(--chip-on-bg);color:var(--chip-on-fg)}
+.tab .k{font-weight:400;opacity:.7;margin-right:6px}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px;border:1px solid var(--line);border-radius:var(--r-card);padding:32px;background:var(--surface)}
+.panel[hidden]{display:none}
+.panel .q{font-family:var(--font-display);font-size:30px;line-height:36px;letter-spacing:-.01em}
+.panel .q small{display:block;font-family:var(--font-text);font-size:14px;line-height:21px;color:var(--muted);margin-bottom:12px;letter-spacing:0}
+.tasks{list-style:none;display:grid;gap:0}
+.tasks li{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.tasks li:first-child{padding-top:0}
+.tasks li:last-child{border-bottom:0;padding-bottom:0}
+.tasks .id{font-family:var(--font-display);font-weight:500;font-size:22px;line-height:28px;color:var(--accent)}
+.tasks .nm{font-weight:600}
+.tasks .src{font-size:13px;line-height:20px;color:var(--muted);text-align:right}
+.kit-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px;font-size:14px;line-height:21px;color:var(--muted)}
+.kit-foot .btn{margin-left:auto}
+
+/* Delivery */
+.deliver{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.deliver article{padding:24px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface)}
+.deliver .num{font-family:var(--font-display);font-weight:500;font-size:42px;line-height:44px;letter-spacing:-.02em;color:var(--accent);margin-bottom:12px}
+.deliver h3{font-size:17px;line-height:24px;font-weight:700;margin-bottom:8px}
+.deliver p{font-size:14px;line-height:21px;color:var(--muted)}
+
+/* Locked */
+.locked{background:var(--pine);color:var(--cream);border-radius:var(--r-panel);padding:48px;border:1px solid var(--cream-12)}
+.locked .head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:start;margin-bottom:48px}
+.locked .eyebrow{color:var(--mint);margin-bottom:12px}
+.locked h2{margin-bottom:16px}
+.locked .head p{color:var(--cream-82);max-width:52ch}
+.unlock label{display:block;font-size:14px;line-height:21px;font-weight:600;margin-bottom:8px}
+.unlock .row{display:flex;gap:8px}
+.unlock .field{position:relative;flex:1}
+.unlock input{width:100%;height:44px;border-radius:var(--r-field);border:1px solid var(--cream-25);background:var(--cream-07);color:var(--cream);padding:0 72px 0 16px;font-size:16px;outline:none;transition:border-color .15s,box-shadow .15s}
+.unlock input::placeholder{color:var(--cream-70)}
+.unlock input:focus{border-color:var(--mint);box-shadow:0 0 0 3px var(--mint-15)}
+.unlock input[aria-invalid="true"]{border-color:var(--cream)}
+.unlock .peek{position:absolute;right:8px;top:50%;transform:translateY(-50%);height:28px;padding:0 12px;border:0;border-radius:var(--r-pill);background:transparent;color:var(--cream-70);font-size:12px;font-weight:600;cursor:pointer}
+.unlock .peek:hover{color:var(--mint)}
+.unlock .msg{min-height:21px;margin-top:8px;font-size:14px;line-height:21px;color:var(--cream-70)}
+.unlock .msg.err{color:var(--cream)}
+.unlock .msg.ok{color:var(--mint)}
+.unlock .hint{margin-top:4px;font-size:12px;line-height:18px;color:var(--cream-70)}
+.rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.rfile{display:grid;grid-template-columns:96px minmax(0,1fr);gap:24px;padding:24px;border:1px solid var(--cream-12);border-radius:var(--r-card);background:var(--cream-07)}
+.rfile .cover{aspect-ratio:3/4;border-radius:var(--r-card);border:1px solid var(--cream-16);display:grid;place-items:center;font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--cream-70);text-align:center;padding:8px}
+.rfile .cover b{display:block;font-family:var(--font-display);font-weight:400;font-size:30px;line-height:36px;color:var(--mint);margin-bottom:4px}
+.rfile h3{font-family:var(--font-display);font-weight:400;font-size:22px;line-height:28px;margin-bottom:8px}
+.rfile p{font-size:14px;line-height:21px;color:var(--cream-82);margin-bottom:12px}
+.rfile .facts{font-size:12px;line-height:18px;color:var(--cream-70);margin-bottom:16px}
+.rfile .acts{display:flex;flex-wrap:wrap;gap:8px}
+.rfile .acts .btn{height:36px;line-height:36px;padding:0 16px}
+.rfile .acts .btn-tertiary{color:var(--mint)}
+.locked[data-state="open"] .tag::before{background:var(--mint)}
+
+/* Footer */
+footer{background:var(--pine);color:var(--cream-70);padding:48px 0;font-size:14px;line-height:21px}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:24px 48px}
+footer img{height:16px;width:auto;min-width:120px}
+footer .right{margin-left:auto;text-align:right}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);background:var(--pine);color:var(--cream);border:1px solid var(--cream-16);border-radius:var(--r-pill);padding:12px 24px;font-size:14px;line-height:21px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:80;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast b{color:var(--mint);font-weight:600}
+
+/* Responsive */
+@media (max-width:1024px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .hero .wrap{grid-template-columns:1fr}
+  .badge-stage{display:none}
+  .nav ul{display:none}
+  .progress-pill{display:inline-flex;margin-left:auto}
+}
+@media (max-width:760px){
+  .wrap{padding:0 16px}
+  h1.display{font-size:42px;line-height:44px}
+  h2.display{font-size:30px;line-height:36px;letter-spacing:-.01em}
+  .lede{font-size:17px;line-height:26px}
+  .hero .wrap{padding-top:48px;padding-bottom:48px}
+  .hero .eyebrow{flex-direction:column;gap:4px}
+  .hero .eyebrow span+span::before{content:none}
+  .hero .meta{grid-template-columns:1fr 1fr;gap:12px 24px}
+  .hero .actions .btn{width:100%}
+  section.block{padding:48px 0}
+  .sec-head{grid-template-columns:1fr;margin-bottom:32px}
+  .grid,.steps,.deliver,.rgrid,.quote{grid-template-columns:1fr}
+  .stat .num{font-size:30px;line-height:36px}
+  .search{width:100%;margin-left:0}
+  .search kbd{display:none}
+  .panel{grid-template-columns:1fr;padding:24px}
+  .tasks li{grid-template-columns:44px minmax(0,1fr)}
+  .tasks .src{grid-column:2;text-align:left;margin-top:-12px}
+  .kit-foot .btn{margin-left:0;width:100%}
+  .locked{padding:24px;border-radius:var(--r-panel)}
+  .locked .head{grid-template-columns:1fr;gap:32px;margin-bottom:32px}
+  .rfile{grid-template-columns:64px minmax(0,1fr);gap:16px;padding:16px}
+  .rfile .cover b{font-size:22px;line-height:28px}
+  footer .right{margin-left:0;text-align:left}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#arquivos">Ir para os arquivos</a>
+
+<header class="nav on-dark">
+  <div class="wrap">
+    <a class="logo" href="#topo" aria-label="Delta Academy, voltar ao topo"><img src="marca/delta-academy.svg" alt="Delta Academy" width="186" height="18"></a>
+    <nav aria-label="Seções">
+      <ul>
+        <li><a class="link" href="#case">O case</a></li>
+        <li><a class="link" href="#comecar">Por onde começar</a></li>
+        <li><a class="link" href="#arquivos">Arquivos</a></li>
+        <li><a class="link" href="#kit">Kit do FDE</a></li>
+        <li><a class="link" href="#entrega">Entrega</a></li>
+        <li><a class="link" href="#resolucao">Resolução</a></li>
+      </ul>
+    </nav>
+    <a class="tag progress-pill" href="#arquivos" style="text-decoration:none" data-progress-label>0 de 5 lidos</a>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="hero on-dark" aria-labelledby="titulo">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow"><span>Certificação FDE</span><span>O papel do FDE e a imersão operacional</span><span>Hotseat · quinta, 8 de outubro</span></p>
+        <h1 class="display" id="titulo">Case Tarumã Componentes</h1>
+        <p class="lede">Um pedido de IA do CFO, uma operação de contas a pagar e quatro semanas para descobrir qual é o problema de verdade.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="arquivos/Case-Taruma-Componentes-materiais.zip" download data-dl="Todos os materiais (.zip)">Baixar todos (.zip) <span class="size">774 KB</span></a>
+          <a class="btn btn-secondary" href="#arquivos">Ver os arquivos ↓</a>
+        </div>
+        <dl class="meta">
+          <div><dt>Professor</dt><dd>Rodrigo Silva</dd></div>
+          <div><dt>Formato</dt><dd>Trio, 12 tarefas</dd></div>
+          <div><dt>Materiais</dt><dd>4 PDFs e o kit</dd></div>
+        </dl>
+      </div>
+      <div class="badge-stage" aria-hidden="true">
+        <div class="lanyard"></div>
+        <div class="badge">
+          <div class="slot"></div>
+          <div class="band">Tarumã componentes</div>
+          <div class="who">Visitante</div>
+          <dl>
+            <div><dt>Função</dt><dd>Forward deployed engineer</dd></div>
+            <div><dt>Área</dt><dd>Contas a pagar</dd></div>
+            <div><dt>Válido</dt><dd>5 a 30 de outubro de 2026</dd></div>
+            <div><dt>Unidade</dt><dd>Joinville, SC</dd></div>
+          </dl>
+          <div class="bars"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="case" aria-labelledby="t-case">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">O case</p>
+          <h2 class="display" id="t-case">O CFO pediu um agente de IA. O trabalho é descobrir do que a Tarumã precisa.</h2>
+        </div>
+        <p>Estamparia de Joinville, 1.400 funcionários, R$ 680 mi de faturamento. Um financeiro único atende duas fábricas. O pedido chegou por e-mail em 22 de setembro. O FDE começa no dia 5.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">R$ 90.100</div><p>por mês em multas, juros e descontos de 2% não aproveitados.</p></div>
+        <div class="stat"><div class="num">4.200</div><p>notas fiscais por mês. 610 pagas em atraso.</p></div>
+        <div class="stat"><div class="num">R$ 180 mil</div><p>todo o orçamento do piloto, incluindo o trabalho do FDE.</p></div>
+        <div class="stat"><div class="num">15/01</div><p>reunião do conselho. O CFO quer chegar com resultado.</p></div>
+      </div>
+      <div class="quote">
+        <figure><blockquote>“A gente não dá conta.”</blockquote><figcaption>Juliana Ferraz, coordenadora de contas a pagar, no primeiro dia.</figcaption></figure>
+        <figure><blockquote>“A Marlene tem tudo isso na cabeça. Eu preciso escrever.”</blockquote><figcaption>Talita Rocha, analista de contas a pagar, relato de 8 de outubro.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="comecar" aria-labelledby="t-comecar">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Por onde começar</p>
+          <h2 class="display" id="t-comecar">Três passos, nesta ordem.</h2>
+        </div>
+        <p>Leia o caderno inteiro antes de abrir qualquer template. As pessoas dizem coisas diferentes e alguns números contradizem o que elas acreditam. Isso é proposital.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Leia o caderno do aluno</h3><p>Do começo ao fim. A história da Tarumã, os anexos, o glossário e as doze tarefas do desafio.</p><a href="#f-caderno" data-jump>Ir para o caderno →</a></li>
+        <li><h3>Simule o campo com os relatos</h3><p>Doze entrevistas, conversas e e-mails. Quando um relato contradiz o caderno, vale o número medido. A contradição vira achado.</p><a href="#f-relatos" data-jump>Ir para os relatos →</a></li>
+        <li><h3>Preencha o kit com o guia ao lado</h3><p>Uma planilha e seis arquivos Word. O guia mostra campo a campo o que separa uma resposta fraca de uma forte.</p><a href="#kit">Ver o kit do FDE →</a></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="arquivos" aria-labelledby="t-arquivos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Arquivos do case</p>
+          <h2 class="display" id="t-arquivos">Material do trio.</h2>
+        </div>
+        <p>Abra no navegador ou baixe. Marque o que já leu: o progresso fica salvo neste navegador.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="chips" role="group" aria-label="Filtrar arquivos">
+          <button class="chip" type="button" data-filter="todos" aria-pressed="true">Todos<span class="n">5</span></button>
+          <button class="chip" type="button" data-filter="leitura" aria-pressed="false">Leitura<span class="n">2</span></button>
+          <button class="chip" type="button" data-filter="apoio" aria-pressed="false">Apoio<span class="n">2</span></button>
+          <button class="chip" type="button" data-filter="aula" aria-pressed="false">Aula<span class="n">1</span></button>
+        </div>
+        <label class="search"><span class="sr-only">Buscar arquivo</span><input type="search" id="q" placeholder="Buscar arquivo" autocomplete="off"><kbd>/</kbd></label>
+        <div class="readbar" aria-live="polite">
+          <span data-progress-label>0 de 5 lidos</span>
+          <div class="track" aria-hidden="true"><div class="fill" id="fill"></div></div>
+          <button class="btn btn-tertiary" type="button" id="reset" hidden>Limpar marcações</button>
+        </div>
+      </div>
+
+      <div class="grid" id="grid">
+        <article class="file" id="f-caderno" data-cat="leitura" data-key="caderno">
+          <a class="thumb" href="arquivos/Case-Taruma-Caderno-do-aluno.pdf" target="_blank" rel="noopener" aria-label="Abrir caderno do aluno em nova aba"><img src="miniaturas/Case-Taruma-Caderno-do-aluno.jpg" alt="" loading="lazy" width="509" height="720"><span class="ext">PDF</span><span class="open-hint">Abrir ↗</span></a>
+          <div class="body">
+            <div class="top"><span class="tag">Leitura · comece aqui</span></div>
+            <h3>Caderno do aluno</h3>
+            <p>O case em dez capítulos, com anexos e glossário, e o desafio: doze tarefas em quatro etapas, cada uma ligada a um template do kit.</p>
+            <div class="facts"><span>PDF</span><span>18 páginas</span><span>103 KB</span></div>
+            <div class="acts">
+              <a class="btn btn-secondary" href="arquivos/Case-Taruma-Caderno-do-aluno.pdf" target="_blank" rel="noopener">Abrir ↗</a>
+              <a class="btn btn-tertiary" href="arquivos/Case-Taruma-Caderno-do-aluno.pdf" download data-dl="Caderno do aluno">Baixar ↓</a>
+              <label class="check"><input type="checkbox" aria-label="Marcar caderno do aluno como lido"><span>Lido</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="file" id="f-relatos" data-cat="leitura" data-key="relatos">
+          <a class="thumb" href="arquivos/Case-Taruma-Relatos-de-campo.pdf" target="_blank" rel="noopener" aria-label="Abrir relatos de campo em nova aba"><img src="miniaturas/Case-Taruma-Relatos-de-campo.jpg" alt="" loading="lazy" width="509" height="720"><span class="ext">PDF</span><span class="open-hint">Abrir ↗</span></a>
+          <div class="body">
+            <div class="top"><span class="tag">Leitura</span></div>
+            <h3>Relatos de campo</h3>
+            <p>Entrevistas, conversas e documentos simulados para construir os templates sem acesso a um cliente real. Separe o que foi contado do que foi verificado.</p>
+            <div class="facts"><span>PDF</span><span>18 páginas</span><span>100 KB</span></div>
+            <div class="acts">
+              <a class="btn btn-secondary" href="arquivos/Case-Taruma-Relatos-de-campo.pdf" target="_blank" rel="noopener">Abrir ↗</a>
+              <a class="btn btn-tertiary" href="arquivos/Case-Taruma-Relatos-de-campo.pdf" download data-dl="Relatos de campo">Baixar ↓</a>
+              <label class="check"><input type="checkbox" aria-label="Marcar relatos de campo como lido"><span>Lido</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="file" id="f-guia" data-cat="apoio" data-key="guia">
+          <a class="thumb" href="arquivos/Guia-de-preenchimento-dos-templates.pdf" target="_blank" rel="noopener" aria-label="Abrir guia de preenchimento em nova aba"><img src="miniaturas/Guia-de-preenchimento-dos-templates.jpg" alt="" loading="lazy" width="509" height="720"><span class="ext">PDF</span><span class="open-hint">Abrir ↗</span></a>
+          <div class="body">
+            <div class="top"><span class="tag">Apoio</span></div>
+            <h3>Guia de preenchimento dos templates</h3>
+            <p>Cada template do kit, como responder campo a campo, a diferença entre uma resposta fraca e uma forte e quando ele está pronto.</p>
+            <div class="facts"><span>PDF</span><span>42 páginas</span><span>215 KB</span></div>
+            <div class="acts">
+              <a class="btn btn-secondary" href="arquivos/Guia-de-preenchimento-dos-templates.pdf" target="_blank" rel="noopener">Abrir ↗</a>
+              <a class="btn btn-tertiary" href="arquivos/Guia-de-preenchimento-dos-templates.pdf" download data-dl="Guia de preenchimento">Baixar ↓</a>
+              <label class="check"><input type="checkbox" aria-label="Marcar guia de preenchimento como lido"><span>Lido</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="file" id="f-kit" data-cat="apoio" data-key="kit">
+          <a class="thumb thumb-kit" href="arquivos/Kit-do-FDE.zip" download data-dl="Kit do FDE" aria-label="Baixar kit do FDE">
+            <span class="ext">ZIP</span>
+            <ul>
+              <li><span>xlsx</span>Planilhas 01, 02 e 08</li>
+              <li><span>03</span>Roteiro de entrevista de campo</li>
+              <li><span>04</span>Contrato de sucesso</li>
+              <li><span>05</span>Relatório semanal ao sponsor</li>
+              <li><span>06</span>Memo de decisão</li>
+              <li><span>07</span>Pedido de mudança de escopo</li>
+              <li><span>09</span>Checklist de handover</li>
+            </ul>
+            <span class="open-hint">Baixar ↓</span>
+          </a>
+          <div class="body">
+            <div class="top"><span class="tag">Apoio · templates</span></div>
+            <h3>Kit do FDE</h3>
+            <p>Uma planilha e seis arquivos Word. É onde as respostas do trio são escritas.</p>
+            <div class="facts"><span>ZIP</span><span>7 arquivos</span><span>360 KB</span></div>
+            <div class="acts">
+              <a class="btn btn-secondary" href="arquivos/Kit-do-FDE.zip" download data-dl="Kit do FDE">Baixar ↓</a>
+              <a class="btn btn-tertiary" href="#kit">Ver tarefas</a>
+              <label class="check"><input type="checkbox" aria-label="Marcar kit do FDE como visto"><span>Visto</span></label>
+            </div>
+          </div>
+        </article>
+
+        <article class="file" id="f-hotseat" data-cat="aula" data-key="hotseat">
+          <a class="thumb" href="arquivos/Hotseat-Case-Taruma-Componentes.pdf" target="_blank" rel="noopener" aria-label="Abrir slides do hotseat em nova aba"><img src="miniaturas/Hotseat-Case-Taruma-Componentes.jpg" alt="" loading="lazy"><span class="ext">PDF</span><span class="open-hint">Abrir ↗</span></a>
+          <div class="body">
+            <div class="top"><span class="tag">Aula · 8 de outubro</span></div>
+            <h3>Slides do hotseat</h3>
+            <p>A apresentação da aula: a empresa, o pedido, as pessoas, as restrições, a missão do trio e o formato da entrega final.</p>
+            <div class="facts"><span>PDF</span><span>21 slides</span><span>110 KB</span></div>
+            <div class="acts">
+              <a class="btn btn-secondary" href="arquivos/Hotseat-Case-Taruma-Componentes.pdf" target="_blank" rel="noopener">Abrir ↗</a>
+              <a class="btn btn-tertiary" href="arquivos/Hotseat-Case-Taruma-Componentes.pdf" download data-dl="Slides do hotseat">Baixar ↓</a>
+              <label class="check"><input type="checkbox" aria-label="Marcar slides do hotseat como lido"><span>Lido</span></label>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="empty" id="empty">Nenhum arquivo encontrado. <button class="btn btn-tertiary" type="button" id="clear">Limpar busca</button></div>
+    </div>
+  </section>
+
+  <section class="block" id="kit" aria-labelledby="t-kit">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Kit do FDE</p>
+          <h2 class="display" id="t-kit">Doze paradas em quatro etapas.</h2>
+        </div>
+        <p>Cada parada usa o que a anterior produziu. O caderno diz, para cada tarefa, o que preencher, onde está a informação e quando está pronta.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Etapas do desafio">
+        <button class="tab" role="tab" id="tab-1" aria-controls="p-1" aria-selected="true"><span class="k">1</span>Entender</button>
+        <button class="tab" role="tab" id="tab-2" aria-controls="p-2" aria-selected="false" tabindex="-1"><span class="k">2</span>Escolher</button>
+        <button class="tab" role="tab" id="tab-3" aria-controls="p-3" aria-selected="false" tabindex="-1"><span class="k">3</span>Decidir</button>
+        <button class="tab" role="tab" id="tab-4" aria-controls="p-4" aria-selected="false" tabindex="-1"><span class="k">4</span>Sair</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-1" aria-labelledby="tab-1">
+        <p class="q"><small>Etapa 1 · Entender</small>O que acontece de verdade na operação?</p>
+        <ul class="tasks">
+          <li><span class="id">1.1</span><span class="nm">Mapa de stakeholders</span><span class="src">Planilha · aba 01</span></li>
+          <li><span class="id">1.2</span><span class="nm">Folha de shadowing</span><span class="src">Planilha · aba 02</span></li>
+          <li><span class="id">1.3</span><span class="nm">Roteiros de entrevista</span><span class="src">Word 03</span></li>
+          <li><span class="id">1.4</span><span class="nm">Sintoma ou causa</span><span class="src">Folha livre</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-2" aria-labelledby="tab-2" hidden>
+        <p class="q"><small>Etapa 2 · Escolher</small>Qual problema atacar e o que prometer?</p>
+        <ul class="tasks">
+          <li><span class="id">2.1</span><span class="nm">Régua de candidatura</span><span class="src">Planilha</span></li>
+          <li><span class="id">2.2</span><span class="nm">Conta de valor</span><span class="src">Planilha</span></li>
+          <li><span class="id">2.3</span><span class="nm">Contrato de sucesso</span><span class="src">Word 04</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-3" aria-labelledby="tab-3" hidden>
+        <p class="q"><small>Etapa 3 · Decidir</small>Como reagir ao que acontece no caminho?</p>
+        <ul class="tasks">
+          <li><span class="id">3.1</span><span class="nm">Memo de decisão</span><span class="src">Word 06</span></li>
+          <li><span class="id">3.2</span><span class="nm">Mudança de escopo</span><span class="src">Word 07</span></li>
+          <li><span class="id">3.3</span><span class="nm">Relatório ao sponsor</span><span class="src">Word 05</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-4" aria-labelledby="tab-4" hidden>
+        <p class="q"><small>Etapa 4 · Sair</small>Como o piloto vive sem você?</p>
+        <ul class="tasks">
+          <li><span class="id">4.1</span><span class="nm">Runbook</span><span class="src">Planilha · aba 08</span></li>
+          <li><span class="id">4.2</span><span class="nm">Checklist de handover</span><span class="src">Word 09</span></li>
+        </ul>
+      </div>
+
+      <div class="kit-foot">
+        <span>Use as setas do teclado para trocar de etapa.</span>
+        <a class="btn btn-secondary" href="arquivos/Kit-do-FDE.zip" download data-dl="Kit do FDE">Baixar kit do FDE (.zip) <span class="size">360 KB</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="entrega" aria-labelledby="t-entrega">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Entrega final</p>
+          <h2 class="display" id="t-entrega">Cinco minutos para convencer o CFO.</h2>
+        </div>
+        <p>Comece pela decisão que você pede, com prazo. Prove cada slide com um anexo. Termine repetindo o pedido numa frase.</p>
+      </div>
+      <div class="deliver">
+        <article><div class="num">1</div><h3>Um arquivo por trio</h3><p>Trio.zip com o nome dos três: a planilha do kit, os documentos Word e a apresentação final. Prazo e canal de envio informados pelo professor.</p></article>
+        <article><div class="num">9</div><h3>Slides para o CFO</h3><p>Parte 1 conta a história, do pedido inicial às decisões. Parte 2 traz os doze templates como anexos.</p></article>
+        <article><div class="num">5 + 3</div><h3>Minutos com a banca</h3><p>Cinco de apresentação e três de perguntas, com a banca no papel do CFO.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="resolucao" aria-labelledby="t-resolucao" style="border-bottom:0">
+    <div class="wrap">
+      <div class="locked on-dark" id="locked" data-state="closed">
+        <div class="head">
+          <div>
+            <p class="eyebrow">Resolução do case</p>
+            <h2 class="display" id="t-resolucao">Gabaritos e exemplo de apresentação final.</h2>
+            <p>Os dois arquivos trazem as respostas. Ficam guardados até a correção: liberar antes tira do trio a parte mais importante do trabalho. A senha é informada pelo professor ao final.</p>
+          </div>
+          <form class="unlock" id="unlock" autocomplete="off" novalidate>
+            <label for="pw">Senha da resolução</label>
+            <div class="row">
+              <div class="field">
+                <input id="pw" type="password" placeholder="Digite a senha" aria-describedby="pw-msg" spellcheck="false" autocapitalize="off">
+                <button class="peek" type="button" id="peek" aria-pressed="false">Mostrar</button>
+              </div>
+              <button class="btn btn-secondary" type="submit" id="go">Desbloquear</button>
+            </div>
+            <p class="msg" id="pw-msg" role="status"></p>
+            <p class="hint">Os arquivos são criptografados. Sem a senha, o download não abre.</p>
+          </form>
+        </div>
+        <div class="rgrid">
+          <article class="rfile" data-src="Case-Taruma-Caderno-completo-com-gabaritos" data-name="Case-Taruma-Caderno-completo-com-gabaritos.pdf">
+            <div class="cover"><div><b>29</b>páginas</div></div>
+            <div>
+              <span class="tag" data-lock-tag>Bloqueado</span>
+              <h3 style="margin-top:12px">Caderno completo com gabaritos</h3>
+              <p>Case, desafio e respostas de referência por tarefa, com armadilhas e perguntas da banca.</p>
+              <div class="facts">PDF · 153 KB</div>
+              <div class="acts">
+                <button class="btn btn-secondary" type="button" data-act="open" disabled>Abrir ↗</button>
+                <button class="btn btn-tertiary" type="button" data-act="download" disabled>Baixar ↓</button>
+              </div>
+            </div>
+          </article>
+          <article class="rfile" data-src="Case-Taruma-Apresentacao-final-exemplo" data-name="Case-Taruma-Apresentacao-final-exemplo.pdf">
+            <div class="cover"><div><b>27</b>páginas</div></div>
+            <div>
+              <span class="tag" data-lock-tag>Bloqueado</span>
+              <h3 style="margin-top:12px">Exemplo de apresentação final</h3>
+              <p>Uma resposta de referência completa: nove slides para o CFO e os doze anexos.</p>
+              <div class="facts">PDF · 142 KB</div>
+              <div class="acts">
+                <button class="btn btn-secondary" type="button" data-act="open" disabled>Abrir ↗</button>
+                <button class="btn btn-tertiary" type="button" data-act="download" disabled>Baixar ↓</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="marca/delta-academy.svg" alt="Delta Academy" width="166" height="16">
+    <span>Certificação FDE · O papel do FDE e a imersão operacional</span>
+    <span class="right">Baseado no livro Forward Deployed Engineer: a faixa preta da IA.<br>Empresa, pessoas e números fictícios.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var store = {
+    get:function(k,s){try{return (s?sessionStorage:localStorage).getItem(k)}catch(e){return null}},
+    set:function(k,v,s){try{(s?sessionStorage:localStorage).setItem(k,v)}catch(e){}},
+    del:function(k,s){try{(s?sessionStorage:localStorage).removeItem(k)}catch(e){}}
+  };
+
+  /* Toast */
+  var toast=document.getElementById('toast'),tt;
+  function say(html){toast.innerHTML=html;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},2600)}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-dl]');
+    if(a) say('Download iniciado: <b>'+a.getAttribute('data-dl')+'</b>');
+  });
+
+  /* Read progress */
+  var KEY='taruma-lidos';
+  var read={};try{read=JSON.parse(store.get(KEY)||'{}')||{}}catch(e){read={}}
+  var cards=[].slice.call(document.querySelectorAll('.file'));
+  var labels=document.querySelectorAll('[data-progress-label]');
+  var fill=document.getElementById('fill'),reset=document.getElementById('reset');
+  function paint(){
+    var n=0;
+    cards.forEach(function(c){var on=!!read[c.dataset.key];c.classList.toggle('is-read',on);c.querySelector('.check input').checked=on;if(on)n++});
+    labels.forEach(function(l){l.textContent=n+' de '+cards.length+' lidos'});
+    fill.style.width=(n/cards.length*100)+'%';
+    reset.hidden=n===0;
+  }
+  cards.forEach(function(c){
+    c.querySelector('.check input').addEventListener('change',function(){
+      if(this.checked)read[c.dataset.key]=1;else delete read[c.dataset.key];
+      store.set(KEY,JSON.stringify(read));paint();
+      if(this.checked&&Object.keys(read).length===cards.length)say('Tudo lido. <b>Hora de abrir o kit.</b>');
+    });
+  });
+  reset.addEventListener('click',function(){read={};store.del(KEY);paint()});
+  paint();
+
+  /* Filter + search */
+  var chips=[].slice.call(document.querySelectorAll('.chip')),q=document.getElementById('q'),empty=document.getElementById('empty'),cat='todos';
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+  function apply(){
+    var term=norm(q.value.trim()),shown=0;
+    cards.forEach(function(c){
+      var ok=(cat==='todos'||c.dataset.cat===cat)&&(!term||norm(c.textContent).indexOf(term)>-1);
+      c.hidden=!ok;if(ok)shown++;
+    });
+    empty.classList.toggle('show',shown===0);
+  }
+  chips.forEach(function(ch){ch.addEventListener('click',function(){cat=ch.dataset.filter;chips.forEach(function(x){x.setAttribute('aria-pressed',x===ch)});apply()})});
+  q.addEventListener('input',apply);
+  q.addEventListener('keydown',function(e){if(e.key==='Escape'){q.value='';apply();q.blur()}});
+  document.getElementById('clear').addEventListener('click',function(){q.value='';cat='todos';chips.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.filter==='todos')});apply();q.focus()});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='/'&&!/input|textarea/i.test((document.activeElement||{}).tagName||'')){e.preventDefault();q.focus()}
+  });
+
+  /* Jump links reveal the card even if filtered out */
+  document.querySelectorAll('[data-jump]').forEach(function(a){a.addEventListener('click',function(){
+    q.value='';cat='todos';chips.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.filter==='todos')});apply();
+  })});
+
+  /* Tabs */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function sel(t,focus){
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on});
+    if(focus)t.focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){sel(t)});
+    t.addEventListener('keydown',function(e){
+      var j=null;
+      if(e.key==='ArrowRight')j=(i+1)%tabs.length;
+      if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;
+      if(e.key==='Home')j=0;if(e.key==='End')j=tabs.length-1;
+      if(j!==null){e.preventDefault();sel(tabs[j],true)}
+    });
+  });
+
+  /* Scroll spy */
+  var links=[].slice.call(document.querySelectorAll('.nav a.link'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){
+      if(en.isIntersecting){links.forEach(function(l){l.setAttribute('aria-current',l.getAttribute('href')==='#'+en.target.id)})}
+    })},{rootMargin:'-40% 0px -55% 0px'});
+    links.forEach(function(l){var s=document.querySelector(l.getAttribute('href'));if(s)io.observe(s)});
+  }
+
+  /* Locked resolution: AES-256-CBC, key and IV from PBKDF2-SHA256 (openssl enc -pbkdf2 format) */
+  var form=document.getElementById('unlock'),pw=document.getElementById('pw'),msg=document.getElementById('pw-msg'),go=document.getElementById('go'),box=document.getElementById('locked');
+  var rfiles=[].slice.call(document.querySelectorAll('.rfile'));
+  document.getElementById('peek').addEventListener('click',function(){
+    var show=pw.type==='password';pw.type=show?'text':'password';this.textContent=show?'Ocultar':'Mostrar';this.setAttribute('aria-pressed',show);pw.focus();
+  });
+  /* Encrypted files load as scripts so the page also works opened from disk (file://) */
+  function load(name){
+    return new Promise(function(ok,fail){
+      var bag=window.__taruma||{};
+      function done(){var b=(window.__taruma||{})[name];if(!b)return fail(new Error('net'));var s=atob(b),u=new Uint8Array(s.length);for(var i=0;i<s.length;i++)u[i]=s.charCodeAt(i);ok(u.buffer)}
+      if(bag[name])return done();
+      var sc=document.createElement('script');sc.src='restrito/'+name+'.js';sc.onload=done;sc.onerror=function(){fail(new Error('net'))};document.head.appendChild(sc);
+    });
+  }
+  async function decrypt(buf,pass){
+    var b=new Uint8Array(buf);
+    if(String.fromCharCode.apply(null,b.slice(0,8))!=='Salted__')throw new Error('format');
+    var salt=b.slice(8,16),ct=b.slice(16);
+    var km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pass),'PBKDF2',false,['deriveBits']);
+    var bits=new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',salt:salt,iterations:250000,hash:'SHA-256'},km,384));
+    var key=await crypto.subtle.importKey('raw',bits.slice(0,32),'AES-CBC',false,['decrypt']);
+    var pt=new Uint8Array(await crypto.subtle.decrypt({name:'AES-CBC',iv:bits.slice(32,48)},key,ct));
+    if(String.fromCharCode.apply(null,pt.slice(0,4))!=='%PDF')throw new Error('pass');
+    return new Blob([pt],{type:'application/pdf'});
+  }
+  async function unlock(pass,quiet){
+    go.disabled=true;msg.className='msg';msg.textContent='Verificando…';pw.removeAttribute('aria-invalid');
+    try{
+      if(!(window.crypto&&crypto.subtle))throw new Error('crypto');
+      var blobs=await Promise.all(rfiles.map(async function(r){
+        var buf=await load(r.dataset.src);
+        try{return await decrypt(buf,pass)}catch(e){throw new Error(e&&e.message==='format'?'net':'pass')}
+      }));
+      rfiles.forEach(function(r,i){
+        var url=URL.createObjectURL(blobs[i]),name=r.dataset.name;
+        r.querySelector('[data-lock-tag]').textContent='Liberado';
+        r.querySelectorAll('[data-act]').forEach(function(btn){
+          btn.disabled=false;
+          btn.onclick=function(){
+            if(btn.dataset.act==='open'){var w=window.open(url,'_blank');if(!w)say('O navegador bloqueou a nova aba. <b>Use Baixar.</b>')}
+            else{var a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();say('Download iniciado: <b>'+r.querySelector('h3').textContent+'</b>')}
+          };
+        });
+      });
+      box.dataset.state='open';
+      store.set('taruma-res',pass,true);
+      msg.className='msg ok';msg.textContent='Resolução liberada.';
+      form.querySelector('.row').hidden=true;form.querySelector('label').hidden=true;form.querySelector('.hint').hidden=true;
+      if(!quiet)say('<b>Resolução liberada.</b>');
+    }catch(err){
+      go.disabled=false;
+      if(!err||err.message!=='pass'){msg.className='msg err';msg.textContent=(err&&err.message==='crypto')?'Este navegador não liberou a criptografia. Abra a página pelo endereço https.':'Não foi possível carregar os arquivos. Tente de novo.';return}
+      store.del('taruma-res',true);
+      if(quiet){msg.textContent='';return}
+      msg.className='msg err';msg.textContent='Senha incorreta.';pw.setAttribute('aria-invalid','true');pw.select();
+    }
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var v=pw.value.trim();
+    if(!v){msg.className='msg err';msg.textContent='Digite a senha.';pw.focus();return}
+    unlock(v,false);
+  });
+  var saved=store.get('taruma-res',true);if(saved)unlock(saved,true);
+})();
+</script>
+</body>
+</html>
