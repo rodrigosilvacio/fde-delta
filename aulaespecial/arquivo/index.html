@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Arquivo · Aula especial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@400&family=Manrope:wght@300;400;600;700&display=swap">
+<link rel="stylesheet" href="../estilo.css">
+<style>
+.hero-in,.wrap{max-width:1180px}
+.hero h1{font-size:42px;line-height:44px}
+.login{max-width:420px;display:grid;gap:16px}
+.numeros{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.numero{border:1px solid var(--line);border-radius:8px;padding:24px;display:grid;gap:4px}
+.numero strong{font-family:var(--font-display);font-weight:400;font-size:42px;line-height:44px;font-variant-numeric:tabular-nums}
+.numero span{font-size:14px;color:var(--fg-70)}
+.barra-topo{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:flex-start}
+.barra-topo .hint{margin-left:auto}
+.tabela{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:21px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;white-space:nowrap;background:var(--wash)}
+td{color:var(--fg-82);min-width:120px}
+td.longo{min-width:280px}
+tr:last-child td{border-bottom:0}
+.sim{color:var(--accent);font-weight:700}
+h2.sec{font-size:22px;line-height:28px}
+.duvidas{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.duvidas li{border:1px solid var(--line);border-radius:8px;padding:16px 24px;display:grid;gap:4px}
+.duvidas li p{white-space:pre-wrap}
+.duvidas li span{font-size:12px;line-height:18px;color:var(--fg-70)}
+.busca{max-width:320px}
+@media (max-width:800px){.numeros{grid-template-columns:repeat(2,minmax(0,1fr))}.barra-topo .hint{margin-left:0}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <div class="brandbar"><svg fill="#FCFFFA" xmlns="http://www.w3.org/2000/svg" viewBox="159.92 462.37 1600.15 155.26" height="22" aria-label="Delta Academy" role="img"><path d="M536.78,578.41v-76.82h63.8c14.63,0,24.07,2.77,29.26,8.41,4.73,5.3,6.56,13.94,6.56,30.87s-2.18,25.57-8.07,30.98c-4.83,4.49-13.02,6.56-25.92,6.56h-65.65.01ZM554.51,564.36h44c6.22,0,10.48-.81,13.59-2.53,4.49-2.42,6.34-8.29,6.34-20.15,0-21.31-3.34-25.57-19.93-25.57h-44v48.26ZM651.2,578.41v-76.82h81.66v13.47h-64.15v18.2h61.05v12.1h-61.05v19.58h64.84v13.47h-82.35ZM747.39,578.41v-76.82h17.73v62.42h56.09v14.39h-73.83ZM846.14,578.41v-62.42h-36.17v-14.39h89.95v14.39h-36.05v62.42h-17.73ZM970.73,563.21h-54.82l-8.52,15.2h-19.93l44-76.82h24.07l43.3,76.82h-19.35l-8.76-15.2h.01ZM964.16,550.77l-20.85-36.74-20.62,36.74h41.47ZM1101.22,561.13h-62.89l-10.13,17.28h-10.25l45.26-76.82h13.01l45.26,76.82h-10.13l-10.13-17.28ZM1096.84,553.88l-27.06-45.83-27.06,45.83h54.13ZM1208.11,552.61h8.99v3.22c0,9.21-.92,13.25-3.91,16.71-2.88,3.45-6.68,5.07-13.7,5.87-4.38.35-17.51.81-27.87.81-27.76,0-34.56-1.16-40.19-7.03-4.95-5.07-6.11-11.17-6.11-32.13,0-23.96,1.61-30.06,9.44-35.01,5.87-3.69,12.21-4.26,43.88-4.26,19.24,0,25.92.92,30.64,4.38,5.18,3.57,6.79,8.4,7.14,20.62h-8.99v-1.96c0-13.59-3.22-14.98-35.48-14.98-36.86,0-37.09.12-37.09,31.22,0,17.51.81,23.03,4.03,26.37,3.69,3.8,9.56,4.73,31.1,4.73,34.56,0,38.12-1.27,38.12-14.16v-4.38h0ZM1304.74,561.13h-62.89l-10.13,17.28h-10.25l45.26-76.82h13.01l45.26,76.82h-10.13l-10.13-17.28ZM1300.38,553.88l-27.06-45.83-27.06,45.83h54.14-.01ZM1330.01,578.41v-76.82h59.77c16.93,0,25.45,3.11,30.06,11.17,3.46,5.64,5.07,14.74,5.07,27.18s-1.61,21.66-5.07,27.3c-4.61,8.06-13.13,11.17-30.06,11.17h-59.77ZM1339.24,570.69h51.25c10.82,0,17.85-2.53,20.97-7.48,2.65-4.38,3.91-11.52,3.91-22.8,0-11.86-1.38-19.93-4.15-24.19-3.1-4.73-9.68-6.91-21.42-6.91h-50.56v61.38ZM1439.93,578.41v-76.82h76.48v7.72h-67.26v25.68h64.84v7.26h-64.84v28.45h67.84v7.72h-77.05ZM1530.84,578.41v-76.82h14.86l46.3,66.11,46.41-66.11h14.39v76.82h-9.21v-69.22l-48.37,69.22h-6.79l-48.37-69.22v69.22h-9.21.01ZM1710.89,538.56l36.51-36.97h12.67l-44.57,44.57v32.24h-9.21v-32.24l-44.57-44.57h12.55l36.62,36.97h-.01Z"/><path d="M329.36,462.37l-75.48,155.26,75.16-39.23,75.8,39.23-75.47-155.26ZM287.01,583.26l42.95-85.29,41.12,84.68c-14.42-6.18-27.66-14.8-41.93-21.33l-42.14,21.95h0Z"/><polygon points="498.31 471.89 475.05 503.45 473.07 504.79 371.42 529.9 362.02 510.53 498.32 471.89 498.31 471.89"/><polygon points="296.88 510.18 287.18 530.14 184.38 504.63 183.16 503.95 159.92 471.89 296.88 510.18"/><path d="M285.18,534.26l-8.22,16.9-67.06-15.57c-6.38-7.19-12.61-14.74-18.41-22.41-.36-.48-.93-.59-.7-1.42l94.4,22.5h-.01Z"/><path d="M466.98,511.76l-17.83,23.21c-19.28,5.03-39.02,9.68-58.58,14.05-2.94.66-5.91,1.36-8.89,2l-8.11-16.68,93.4-22.59h.01Z"/><polygon points="274.91 555.38 267.01 571.63 239.7 563.7 220.2 543.09 274.91 555.38"/><polyline points="437.55 543.09 418.2 563.97 391.74 571.71 383.72 555.19 437.55 543.09"/></svg><span class="sep"></span><span>Aula especial · arquivo</span></div>
+    <h1>Inscrições</h1>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="panel">
+    <form id="login" class="login" novalidate>
+      <div class="field">
+        <label for="chave">Senha de acesso</label>
+        <input type="password" id="chave" autocomplete="current-password" required>
+      </div>
+      <div class="aviso erro" id="erro-login" role="alert" hidden></div>
+      <div class="acoes"><button class="btn" type="submit" id="entrar">Entrar</button></div>
+    </form>
+
+    <section id="dados" hidden>
+      <div class="barra-topo">
+        <button class="btn" type="button" id="exportar">Exportar CSV</button>
+        <button class="btn-ghost" type="button" id="atualizar">Atualizar</button>
+        <button class="btn-ghost" type="button" id="sair">Sair</button>
+        <span class="hint" id="carimbo"></span>
+      </div>
+
+      <div class="numeros" style="margin-top:32px">
+        <div class="numero"><strong id="n-total">0</strong><span>inscritos</span></div>
+        <div class="numero"><strong id="n-a1">0</strong><span>na aula 01</span></div>
+        <div class="numero"><strong id="n-a2">0</strong><span>na aula 02</span></div>
+        <div class="numero"><strong id="n-pf">0</strong><span>no projeto final</span></div>
+      </div>
+
+      <div style="margin-top:48px;display:grid;gap:16px">
+        <div class="barra-topo"><h2 class="sec">Lista de inscritos</h2>
+          <input class="busca" type="text" id="busca" placeholder="Buscar por nome, empresa ou email" aria-label="Buscar"></div>
+        <div class="tabela"><table id="tabela"></table></div>
+      </div>
+
+      <div style="margin-top:48px;display:grid;gap:16px">
+        <h2 class="sec">Dúvidas e temas pedidos</h2>
+        <ul class="duvidas" id="duvidas"></ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="../config.js"></script>
+<script>
+(function(){
+  var API = window.AULA_ESPECIAL_API || '';
+  var CHAVE_SESSAO = 'aula-especial-chave';
+  var estado = {cab: [], linhas: []};
+  var $ = function(id){ return document.getElementById(id); };
+
+  function lerChave(){ try { return sessionStorage.getItem(CHAVE_SESSAO) || ''; } catch(e){ return ''; } }
+  function gravarChave(v){ try { v ? sessionStorage.setItem(CHAVE_SESSAO, v) : sessionStorage.removeItem(CHAVE_SESSAO); } catch(e){} }
+
+  function carregar(chave){
+    if (!API) return Promise.reject(new Error('O endereço do Apps Script ainda não foi configurado em config.js.'));
+    return fetch(API, {method:'POST', body: JSON.stringify({acao:'listar', chave: chave})})
+      .then(function(r){ return r.json(); })
+      .then(function(res){ if (!res.ok) throw new Error(res.erro || 'Falha ao carregar.'); return res; });
+  }
+
+  function col(nome){ return estado.cab.indexOf(nome); }
+
+  function render(){
+    var L = estado.linhas, iA1 = col('Aula 01'), iA2 = col('Aula 02'), iPF = col('Projeto final');
+    var conta = function(i){ return L.filter(function(l){ return l[i] === 'Sim'; }).length; };
+    $('n-total').textContent = L.length;
+    $('n-a1').textContent = conta(iA1);
+    $('n-a2').textContent = conta(iA2);
+    $('n-pf').textContent = conta(iPF);
+    $('carimbo').textContent = 'Atualizado às ' + new Date().toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+
+    var termo = $('busca').value.trim().toLowerCase();
+    var visiveis = termo ? L.filter(function(l){ return l.join(' ').toLowerCase().indexOf(termo) > -1; }) : L;
+    var t = $('tabela'); t.textContent = '';
+    var thead = t.createTHead().insertRow();
+    estado.cab.forEach(function(c){ var th = document.createElement('th'); th.textContent = c; thead.appendChild(th); });
+    var tb = t.createTBody();
+    if (!visiveis.length) {
+      var td = tb.insertRow().insertCell(); td.colSpan = estado.cab.length || 1;
+      td.textContent = L.length ? 'Nenhum inscrito encontrado nesta busca.' : 'Ainda não há inscrições. Elas aparecem aqui assim que os alunos enviarem o formulário.';
+    }
+    visiveis.forEach(function(l){
+      var tr = tb.insertRow();
+      l.forEach(function(v, i){
+        var td = tr.insertCell(); td.textContent = v;
+        if (v === 'Sim') td.className = 'sim';
+        if (estado.cab[i] === 'Dúvidas e foco') td.className = 'longo';
+      });
+    });
+
+    var iD = col('Dúvidas e foco'), iN = col('Nome'), iE = col('Empresa');
+    var ul = $('duvidas'); ul.textContent = '';
+    var comDuvida = L.filter(function(l){ return l[iD]; });
+    if (!comDuvida.length) {
+      var li0 = document.createElement('li'); li0.textContent = 'Nenhuma dúvida enviada até agora.'; ul.appendChild(li0);
+    }
+    comDuvida.forEach(function(l){
+      var li = document.createElement('li');
+      var p = document.createElement('p'); p.textContent = l[iD];
+      var s = document.createElement('span'); s.textContent = l[iN] + ' · ' + l[iE];
+      li.appendChild(p); li.appendChild(s); ul.appendChild(li);
+    });
+  }
+
+  function entrar(chave){
+    $('erro-login').hidden = true;
+    $('entrar').disabled = true;
+    return carregar(chave).then(function(res){
+      estado.cab = res.cabecalho || []; estado.linhas = res.linhas || [];
+      gravarChave(chave);
+      $('login').hidden = true; $('dados').hidden = false;
+      render();
+    }).catch(function(e){
+      gravarChave('');
+      $('login').hidden = false; $('dados').hidden = true;
+      $('erro-login').textContent = e.message === 'Failed to fetch' ? 'Não foi possível conectar. Tente de novo.' : e.message;
+      $('erro-login').hidden = false;
+    }).then(function(){ $('entrar').disabled = false; });
+  }
+
+  $('login').addEventListener('submit', function(ev){ ev.preventDefault(); var c = $('chave').value.trim(); if (c) entrar(c); });
+  $('atualizar').addEventListener('click', function(){ entrar(lerChave()); });
+  $('sair').addEventListener('click', function(){ gravarChave(''); estado = {cab:[], linhas:[]}; $('chave').value=''; $('dados').hidden = true; $('login').hidden = false; });
+  $('busca').addEventListener('input', render);
+
+  $('exportar').addEventListener('click', function(){
+    var esc = function(v){ v = String(v == null ? '' : v); if (/^[=+\-@]/.test(v)) v = "'" + v; return '"' + v.replace(/"/g, '""') + '"'; };
+    var csv = [estado.cab].concat(estado.linhas).map(function(l){ return l.map(esc).join(';'); }).join('\r\n');
+    var blob = new Blob(['﻿' + csv], {type:'text/csv;charset=utf-8'});
+    var a = document.createElement('a');
+    var hoje = new Date().toISOString().slice(0,10);
+    a.href = URL.createObjectURL(blob); a.download = 'aula-especial-inscricoes-' + hoje + '.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  var salva = lerChave();
+  if (salva) entrar(salva);
+})();
+</script>
+</body>
+</html>
