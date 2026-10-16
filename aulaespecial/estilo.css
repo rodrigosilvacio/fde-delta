@@ -86,6 +86,15 @@ fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
 .ok-head{display:grid;gap:12px}
 .selo{width:48px;height:48px;border-radius:999px;background:var(--accent-15);display:grid;place-items:center;color:var(--accent)}
 .ok-head h2{font-size:30px;line-height:36px;letter-spacing:-.01em}
+.status{display:flex;align-items:center;gap:8px;font-size:14px;line-height:21px;color:var(--fg-82)}
+.status i{flex:none;width:12px;height:12px;border-radius:999px;border:2px solid var(--accent-15);border-top-color:var(--accent);animation:gira .8s linear infinite}
+.status[data-estado="salvo"] i{animation:none;border:0;background:var(--accent);width:8px;height:8px}
+.status[data-estado="salvo"]{color:var(--accent);font-weight:600}
+.selo{transition:opacity .2s}
+#sucesso:has(.status[data-estado="salvando"]) .selo{opacity:.35}
+@keyframes gira{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.status i{animation-duration:2.4s}}
+.btn-ghost[disabled]{opacity:.5;cursor:default}
 .resumo{margin:0;display:grid;border-top:1px solid var(--line)}
 .resumo div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
 .resumo dt{font-size:14px;color:var(--fg-70)}

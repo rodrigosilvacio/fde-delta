@@ -84,8 +84,8 @@
     <section id="sucesso" hidden aria-live="polite">
       <div class="ok-head">
         <div class="selo" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-        <h2 id="ok-titulo">Inscrição confirmada</h2>
-        <p class="hint" id="ok-texto">Seus dados foram salvos. Confira o que registramos.</p>
+        <h2 id="ok-titulo">Inscrição recebida</h2>
+        <p class="status" id="status" data-estado="salvando"><i aria-hidden="true"></i><span id="status-texto">Salvando na lista de inscritos…</span></p>
       </div>
       <dl class="resumo" id="resumo"></dl>
       <div class="acoes"><button class="btn-ghost" type="button" id="editar">Corrigir meus dados</button></div>
@@ -128,7 +128,17 @@
     if (bloco && bloco.classList.contains('invalido')) validar();
   });
 
-  function mostrarResumo(d, atualizado){
+  var salvando = false;
+  window.addEventListener('beforeunload', function(ev){ if (salvando) { ev.preventDefault(); ev.returnValue = ''; } });
+
+  function estado(e, titulo, texto){
+    document.getElementById('status').setAttribute('data-estado', e);
+    document.getElementById('ok-titulo').textContent = titulo;
+    document.getElementById('status-texto').textContent = texto;
+    document.getElementById('editar').disabled = e === 'salvando';
+  }
+
+  function mostrarResumo(d){
     var linhas = [
       ['Nome', d.nome], ['Email', d.email], ['Empresa', d.empresa], ['Cargo', d.cargo],
       ['Encontros', d.aulas.map(function(a){ return NOMES[a]; }).join(', ')],
@@ -142,10 +152,7 @@
       var dd = document.createElement('dd'); dd.textContent = l[1];
       div.appendChild(dt); div.appendChild(dd); dl.appendChild(div);
     });
-    document.getElementById('ok-titulo').textContent = atualizado ? 'Inscrição atualizada' : 'Inscrição confirmada';
-    document.getElementById('ok-texto').textContent = atualizado
-      ? 'Encontramos uma inscrição com este email e salvamos os novos dados.'
-      : 'Seus dados foram salvos. Confira o que registramos.';
+    estado('salvando', 'Inscrição recebida', 'Salvando na lista de inscritos… não feche esta página.');
     form.hidden = true;
     sucesso.hidden = false;
     sucesso.scrollIntoView({block:'start', behavior:'smooth'});
@@ -168,21 +175,25 @@
       consentimento: document.getElementById('consentimento').checked,
       site: val('site')
     };
-    btn.disabled = true;
-    btn.textContent = 'Salvando…';
+    salvando = true;
+    mostrarResumo(dados);
     fetch(API, {method:'POST', body: JSON.stringify(dados)})
       .then(function(r){ return r.json(); })
       .then(function(res){
         if (!res.ok) throw new Error(res.erro || 'Não foi possível salvar.');
-        mostrarResumo(dados, res.atualizado);
+        estado('salvo', res.atualizado ? 'Inscrição atualizada' : 'Inscrição confirmada',
+          res.atualizado ? 'Salvo. Encontramos uma inscrição com este email e atualizamos os dados.' : 'Salvo. Seus dados estão na lista de inscritos.');
       })
       .catch(function(e){
         erro.textContent = (e && e.message && e.message !== 'Failed to fetch')
           ? e.message + ' Seus dados não foram salvos.'
-          : 'Não conseguimos salvar agora. Verifique sua conexão e tente de novo.';
+          : 'Não conseguimos salvar agora. Seus dados continuam aqui: verifique sua conexão e envie de novo.';
         erro.hidden = false;
+        sucesso.hidden = true;
+        form.hidden = false;
+        erro.scrollIntoView({block:'center'});
       })
-      .then(function(){ btn.disabled = false; btn.textContent = 'Confirmar participação'; });
+      .then(function(){ salvando = false; });
   });
 
   document.getElementById('editar').addEventListener('click', function(){
